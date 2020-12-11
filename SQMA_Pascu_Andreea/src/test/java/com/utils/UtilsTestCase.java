@@ -1,19 +1,25 @@
-package com.tests;
+package com.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 import com.utils.Utils;
 
-public class UtilsTestCase {
+class UtilsTestCase {
 	private Utils utils;
-	
-	@Before
+
+	@BeforeEach
+	@Tag("NumberProcessing")
+	@Tag("StringProcessing")
 	public void setUp(){
 		utils = new Utils();
 	}
@@ -28,14 +34,14 @@ public class UtilsTestCase {
 		result = utils.isPalindromic(-121);
 		assertTrue(result);
 	}
-	
+
 	@Test
 	@Tag("NumberProcessing")
 	public void testIsPalindromicFalse() {
 		boolean result = utils.isPalindromic(123);
 		assertFalse(result);
 	}
-	
+
 	@Test
 	@Tag("NumberProcessing")
 	public void testSumOfDigitsGTThresholdTrue() {
@@ -44,7 +50,7 @@ public class UtilsTestCase {
 		result = utils.sumOfDigitsGTThreshold(123, 5);
 		assertTrue(result);
 	}
-	
+
 	@Test
 	@Tag("NumberProcessing")
 	public void testSumOfDigitsGTThresholdFalse() {
@@ -53,7 +59,7 @@ public class UtilsTestCase {
 		result = utils.sumOfDigitsGTThreshold(123, 6);
 		assertFalse(result);
 	}
-	
+
 	@Test
 	@Tag("StringProcessing")
 	public void testStringToIntArray() {
@@ -64,33 +70,33 @@ public class UtilsTestCase {
 		ArrayList<Integer> actual = utils.stringToIntArray("1-2-3", "-");
 		assertArrayEquals(expected.toArray(), actual.toArray());
 	}
-	
-	@Test(expected = NumberFormatException.class)
+
+	@Test()
 	@Tag("StringProcessing")
 	public void testStringToIntArrayException1() {
-		ArrayList<Integer> array = utils.stringToIntArray("abc-1-2", "-");
+		Assertions.assertThrows(NumberFormatException.class, () -> utils.stringToIntArray("abc-1-2", "-"));
 	}
-	
-	@Test(expected = NumberFormatException.class)
+
+	@Test()
 	@Tag("StringProcessing")
 	public void testStringToIntArrayException2() {
-		ArrayList<Integer> array = utils.stringToIntArray("0-1-2", ":");
+		Assertions.assertThrows(NumberFormatException.class, () -> utils.stringToIntArray("0-1-2", ":"));
 	}
-	
+
 	@Test
 	@Tag("StringProcessing")
 	public void testCountLetterOccurence1() {
 		int actual = utils.countLetterOccurence("character", 'c');
 		assertEquals(2, actual);
 	}
-	
+
 	@Test
 	@Tag("StringProcessing")
 	public void testCountLetterOccurence2() {
 		int actual = utils.countLetterOccurence("Character", 'c');
 		assertEquals(1, actual);
 	}
-	
+
 	@Test
 	@Tag("StringProcessing")
 	public void testCountLetterOccurence3() {
