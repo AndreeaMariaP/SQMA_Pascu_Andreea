@@ -1,0 +1,102 @@
+package com.utils;
+
+import java.util.ArrayList;
+
+public class Utils {
+
+	public static boolean isPalindromic(int number) {
+		int copy = number;
+		int palindrome = 0;
+		while (number != 0) {
+			palindrome = palindrome * 10 + number % 10;
+			number /= 10;
+		}
+		if (copy == palindrome) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean sumOfDigitsGTThreshold(int number, int threshold) {
+		int sumOfDigits = 0;
+		while(number != 0) {
+			sumOfDigits += number%10;
+			number /=10;
+		}
+		if(sumOfDigits > threshold) {
+			return true;
+		}
+		return false;
+	}
+
+	public static ArrayList<Integer> stringToIntArray(String string, String delimitator) throws NumberFormatException {
+		String[] stringArray = string.split(delimitator);
+		ArrayList<Integer> intArray = new ArrayList<Integer>();
+		for (int i = 0; i < stringArray.length; i++) {
+			int value = Integer.parseInt(stringArray[i]);
+			intArray.add(value);
+		}
+		return intArray;
+	}
+
+	public static void main(String[] args) {
+		/*System.out.println("Is 121 Palindromic? " + isPalindromic(121));
+		System.out.println("Is 0 Palindromic? " + isPalindromic(0));
+		System.out.println("Is 123 Palindromic? " + isPalindromic(123));
+		System.out.println("Is -121 Palindromic? " + isPalindromic(-121));
+
+		try {
+			System.out.println("Convert to int array:");
+			String array1 = "1-2-3-4";
+			String delim1 = "-";
+			ArrayList<Integer> intArray1 = stringToIntArray(array1, delim1);
+			for (int i = 0; i < intArray1.size(); i++) {
+				System.out.print(intArray1.get(i) + ", ");
+			}
+			System.out.println();
+		} catch (NumberFormatException numberFormatException) {
+			System.out.println("Number format exception!");
+		}
+
+		try {
+			String array2 = "1-2-3-";
+			String delim2 = "-";
+			ArrayList<Integer> intArray2 = stringToIntArray(array2, delim2);
+			for (int i = 0; i < intArray2.size(); i++) {
+				System.out.print(intArray2.get(i) + ", ");
+			}
+			System.out.println();
+		} catch (NumberFormatException numberFormatException) {
+			System.out.println("Number format exception!");
+		}
+
+		try {
+			String array3 = "1;2";
+			String delim3 = "-";
+			ArrayList<Integer> intArray3 = stringToIntArray(array3, delim3);
+			for (int i = 0; i < intArray3.size(); i++) {
+				System.out.print(intArray3.get(i) + ", ");
+			}
+			System.out.println();
+		} catch (NumberFormatException numberFormatException) {
+			System.out.println("Number format exception!");
+		}
+
+		try {
+			String array4 = "abc-12-3";
+			String delim4 = "-";
+			ArrayList<Integer> intArray4 = stringToIntArray(array4, delim4);
+			for (int i = 0; i < intArray4.size(); i++) {
+				System.out.print(intArray4.get(i) + ", ");
+			}
+			System.out.println();
+		} catch (NumberFormatException numberFormatException) {
+			System.out.println("Number format exception!");
+		}
+		*/
+		
+		System.out.println("Sum of " + 123 + " digits greather than " + 10 + "? " + sumOfDigitsGTThreshold(123, 10) );
+		System.out.println("Sum of " + 0 + " digits greather than " + 0 + "? " + sumOfDigitsGTThreshold(0, 0) );
+		
+	}
+}

@@ -1,0 +1,67 @@
+package com.utils;
+
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
+
+public class Utils {
+	
+	public static boolean isPalindromic(int number) {
+		int copy = number;
+		int palindrome = 0;
+		while(number != 0) {
+			palindrome = palindrome * 10 + number % 10;
+			number /= 10;
+		}
+		if(copy == palindrome) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static int[] stringToIntArray(String string, String delimitator) {
+		String[] stringArray = string.split(delimitator);
+		int[] intArray = new int[stringArray.length];
+		for(int i=0;i<stringArray.length;i++) {
+			try {
+				int value = Integer.parseInt(stringArray[i]);
+				intArray[i] = value;
+			} catch (NumberFormatException numberFormatException) {
+				System.out.println("This value is not a number: " + stringArray[i]);
+			}
+		}
+		return intArray;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Is 121 Palindromic? " + isPalindromic(121));
+		System.out.println("Is 0 Palindromic? " + isPalindromic(0));
+		System.out.println("Is 123 Palindromic? " + isPalindromic(123));
+		System.out.println("Is -121 Palindromic? " + isPalindromic(-121));
+		
+		System.out.println("Convert to int array:");
+		String array1 = "1-2-3-4"; String delim1 = "-";
+		int[] intArray1 = stringToIntArray(array1,  delim1);
+		for(int i=0;i<intArray1.length;i++) {
+			System.out.print(intArray1[i] + ", ");
+		}
+		System.out.println();
+		
+		String array2 = "1-2-3-";  String delim2 = "-";
+		int[] intArray2 = stringToIntArray(array2,  delim2);
+		for(int i=0;i<intArray2.length;i++) {
+			System.out.print(intArray2[i] + ", ");
+		}
+		System.out.println();
+		
+		String array3 = "1;2";     String delim3 = "-";
+		int[] intArray3 = stringToIntArray(array3,  delim3);
+		for(int i=0;i<intArray3.length;i++) {
+			System.out.print(intArray3[i] + ", ");
+		}
+		System.out.println();
+		
+		String array4 = "abc-12-3"; String delim4 = "-";
+		int[] intArray4 = stringToIntArray(array4,  delim4);
+		
+		
+	}
+}

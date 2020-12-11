@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\Users\ampascu\Desktop\SQ\SQMA_Pascu_Andreea\.metadata\.plugins\org.eclipse.jdt.core
+843265626.index
